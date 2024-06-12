@@ -1,0 +1,141 @@
+{
+    "accountLogs": [
+        {
+            "log_id": 1,
+            "member_id": 2,
+            "deposit": 3000000,
+            "withdraw": 0,
+            "category": "월급",
+            "contents": "",
+            "reg_date": "2024-05-17",
+            "balance": 3000000
+        },
+        {
+            "log_id": 2,
+            "member_id": 1,
+            "deposit": 0,
+            "withdraw": 1000,
+            "category": "생필품",
+            "contents": "다이소",
+            "reg_date": "2024-05-20",
+            "balance": 2999000
+        },
+        {
+            "log_id": 3,
+            "member_id": 1,
+            "deposit": 0,
+            "withdraw": 10000,
+            "category": "식비",
+            "contents": "점심식사",
+            "reg_date": "2024-05-26",
+            "balance": 2989000
+        },
+        {
+            "log_id": 4,
+            "member_id": 3,
+            "deposit": 0,
+            "withdraw": 5000,
+            "category": "생필품",
+            "contents": "쓰레기 봉투",
+            "reg_date": "2024-05-12",
+            "balance": 2984000
+        },
+        {
+            "log_id": 5,
+            "member_id": 4,
+            "deposit": 0,
+            "withdraw": 1000,
+            "category": "식비",
+            "contents": "간식",
+            "reg_date": "2024-05-11",
+            "balance": 2983000
+        },
+        {
+            "log_id": 6,
+            "member_id": 4,
+            "deposit": 0,
+            "withdraw": 6000,
+            "category": "생필품",
+            "contents": "그릇",
+            "reg_date": "2024-05-13",
+            "balance": 2977000
+        },
+        {
+            "log_id": 7,
+            "member_id": 5,
+            "deposit": 0,
+            "withdraw": 700000,
+            "category": "여행",
+            "contents": "베트남 항공권",
+            "reg_date": "2024-05-15",
+            "balance": 2277000
+        },
+        {
+            "log_id": 8,
+            "member_id": 1,
+            "deposit": 0,
+            "withdraw": 3000,
+            "category": "생필품",
+            "contents": "다이소",
+            "reg_date": "2024-05-27",
+            "balance": 2274000
+        },
+        {
+            "log_id": 9,
+            "member_id": 1,
+            "deposit": 0,
+            "withdraw": 2000,
+            "category": "의료",
+            "contents": "연고",
+            "reg_date": "2024-05-18",
+            "balance": 2272000
+        },
+        {
+            "log_id": 10,
+            "member_id": 2,
+            "deposit": 0,
+            "withdraw": 5000,
+            "category": "생필품",
+            "contents": "다이소",
+            "reg_date": "2024-05-28",
+            "balance": 2267000
+        }
+    ],
+    "members": [
+        {
+            "member_id": 1,
+            "member_name": "Red",
+            "phone_no": "430-774-3097",
+            "email": "ringon0@dell.com",
+            "status": "Employee"
+        },
+        {
+            "member_id": 2,
+            "member_name": "Serene",
+            "phone_no": "862-542-4006",
+            "email": "sboydell1@who.int",
+            "status": "Freelancer"
+        },
+        {
+            "member_id": 3,
+            "member_name": "Berky",
+            "phone_no": "678-901-4702",
+            "email": "bboni2@yellowpages.com",
+            "status": "Student"
+        },
+        {
+            "member_id": 4,
+            "member_name": "Brice",
+            "phone_no": "657-419-9820",
+            "email": "bpudsey3@pcworld.com",
+            "status": "Job seeker"
+        },
+        {
+            "member_id": 5,
+            "member_name": "Justino",
+            "phone_no": "743-637-9403",
+            "email": "jwetter4@aol.com",
+            "status": "Job seeker"
+        }
+    ]
+}
