@@ -15,18 +15,20 @@ export const useUtilStore = defineStore('util', () => {
         }
     })
 
-    const addThousandSeparatorToCurrency= computed(() => {
-        return (logs) => {
-            logs.forEach(log => {
-                log.deposit = addThousandSeparator(log.deposit);
-                log.withdraw = addThousandSeparator(log.withdraw);
-                log.balance = addThousandSeparator(log.balance);
-            })
-        }
+    // const addThousandSeparatorToCurrency= computed(() => {
+    //     return (logs) => {
+    //         logs.forEach(log => {
+    //             log.deposit = addThousandSeparator(log.deposit);
+    //             log.withdraw = addThousandSeparator(log.withdraw);
+    //             log.balance = addThousandSeparator(log.balance);
+    //         })
+    //     }
+    // })
+    const addThousandSeparator = computed(() => {
+        return (value) => (value).toLocaleString()
     })
-    
-    const addThousandSeparator = (value) => {
-          return (value).toLocaleString()
-      }
-    return {formatDateToStr, parseDate, addThousandSeparatorToCurrency}
+    // const addThousandSeparator = (value) => {
+    //       return (value).toLocaleString()
+    //   }
+    return {formatDateToStr, parseDate, addThousandSeparator}
 })

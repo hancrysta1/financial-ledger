@@ -51,7 +51,6 @@
                         <table class="table table-responsive-xxl">
                             <thead>
                                 <tr>
-                                    <th>&nbsp;</th>
                                     <th>날짜</th>
                                     <th>카테고리</th>
                                     <th>내용</th>
@@ -64,12 +63,6 @@
                                 <tr class="alert" role="alert"
                                 v-for="accountLog in accountLogs" :key="accountLog.log_id">
                                     <td>
-                                        <label class="checkbox-wrap checkbox-primary">
-                                            <input type="checkbox" checked>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </td>
-                                    <td>
                                         {{ accountLog.reg_date }}
                                     </td>
                                     
@@ -80,7 +73,16 @@
                                 </div>
                               </td> -->
                                     <td class="col d-flex align-items-center">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        <i :class="categoryIconClass(accountLog.category)" aria-hidden="true"></i>
+                                        <!-- <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                        <i class="fa fa-cutlery" aria-hidden="true"></i>
+                                        <i class="fa fa-plane" aria-hidden="true"></i>
+                                        <i class="fa fa-medkit" aria-hidden="true"></i> -->
+                                        <!-- fa fa-money -->
+                                        <!-- fa fa-cutlery -->
+                                        <!-- fa fa-plane -->
+                                        <!-- fa fa-medkit -->
                                         <div class="pl-3">
                                             <span>{{ accountLog.category }}</span>
                                         </div>
@@ -89,47 +91,18 @@
                                         {{ accountLog.contents }}
                                     </td>
                                     <td class="status">
-                                        <span class="active">{{ accountLog.deposit>0 ? '수입' : '지출' }}</span>
-                                        <span>{{ accountLog.deposit>0 ? accountLog.deposit : accountLog.withdraw }}</span></td>
+                                        <span :class="{ 'waiting': accountLog.deposit > 0, 'active': accountLog.deposit <= 0 }">{{ accountLog.deposit>0 ? '수입' : '지출' }}</span>
+                                        <span>{{ accountLog.deposit>0 ? addThousandSeparator(accountLog.deposit) : addThousandSeparator(accountLog.withdraw) }}</span></td>
                                     <td>
-                                        {{ accountLog.balance }}
+                                        {{ addThousandSeparator(accountLog.balance) }}
                                     </td>
                                     <td>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+                                            <button type="button" class="modify" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true"><i class="fa fa-pencil-square-o"></i></span>
                                         </button>
                                     </td>
                                 </tr>
-
-                                <!-- <tr class="alert" role="alert">
-                                    <td>
-                                        <label class="checkbox-wrap checkbox-primary">
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </td>
-                                    <td>
-                                        2024-06-10
-                                    </td>
-                                    <td class="col d-flex align-items-center">
-                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                        <div class="pl-3">
-                                            <span>월급</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        6월 급여
-                                    </td>
-                                    <td class="status"><span class="waiting">Active</span> <span>100,000</span></td>
-                                    <td>
-                                        300,000
-                                    </td>
-                                    <td>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                                        </button>
-                                    </td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -167,8 +140,7 @@ export default {
             inputDate.to_date = utilStore.formatDateToStr(new Date())
             const response = await requestAccountLogs()
             Object.assign(accountLogs, response)
-            
-            utilStore.addThousandSeparatorToCurrency(accountLogs)
+
         })
 
         const getPrevMonth = (date) => {
@@ -203,9 +175,27 @@ export default {
             }
         }
 
-        return {inputDate, getPrevMonth, accountLogs, goToPrevMonthHandler, goToNextMonthHandler}
+        const categoryIconClass = (category) => {
+            switch(category) {
+                case '생필품':
+                return 'fa fa-shopping-cart';
+                case '월급':
+                return 'fa fa-money';
+                case '식비':
+                return 'fa fa-cutlery';
+                case '여행':
+                return 'fa fa-plane';
+                case '의료':
+                return 'fa fa-medkit';
+                default:
+                return ''; // 기본값 설정
+            }
+        }
+
+        return {utilStore, inputDate, getPrevMonth, accountLogs, addThousandSeparator: utilStore.addThousandSeparator, goToPrevMonthHandler, goToNextMonthHandler, categoryIconClass}
     }
 }
 </script>
 
-<style></style>
+<style scoped>
+</style>
