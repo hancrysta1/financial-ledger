@@ -46,6 +46,11 @@
                     </form>
                 </div>
             </div>
+            <!-- 모달 -->
+            <DealUpdate v-if="showUpdateModal" @closeToParent="closeToParent" :accountLog="accountLog"/>
+            <!-- v-if="showUpdateModal"
+            @close="closeModal" -->
+            <!-- :dealData="selectedDeal" -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-wrap">
@@ -70,7 +75,7 @@
                                     <td>
                                         {{ formatDate(accountLog.reg_date) }}
                                     </td>
-                                    
+                                    {{ accountLog.reg_date}}
 						      <!-- <td class="d-flex align-items-center">
                                 <div class="img" style="background-image: url(images/person_2.jpg);"></div>
                                 <div class="pl-3">
@@ -98,7 +103,7 @@
                                             <span aria-hidden="true"><i class="fa fa-close"></i></span>
                                         </button>
                                         <button type="button" class="modify" data-dismiss="alert" aria-label="Close"
-                                        @click="clickModifyHandler">
+                                        @click="clickModifyHandler(accountLog)">
                                             <span aria-hidden="true"><i class="fa fa-pencil-square-o"></i></span>
                                         </button>
                                     </td>
@@ -118,7 +123,13 @@ import { ref, reactive, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { useUtilStore } from '@/stores/util.js'
+
+import DealUpdate from '@/components/DealUpdate.vue'
+
 export default {
+    components: {
+        DealUpdate,
+    },
     setup() {
         const utilStore = useUtilStore()
         const accountLogs = reactive([])
@@ -142,10 +153,11 @@ export default {
             },
         ])
         let prevMonth = null
+        let showUpdateModal = ref(false)
+        const accountLog = reactive({})
 
         onMounted(async() => {
             prevMonth = getPrevMonth(new Date())
-            console.log(utilStore.formatDateToStr(prevMonth))
             inputObj.fromDate = utilStore.formatDateToStr(prevMonth)
             inputObj.toDate = utilStore.formatDateToStr(new Date())
             const response = await requestAccountLogs()
@@ -201,10 +213,14 @@ export default {
             refreshAccountLogs()
         }
 
-        const router = useRouter()
-        const clickModifyHandler = () => {
-            console.log(router)
-            router.push({name: 'DealUpdate'})
+        const clickModifyHandler = (log) => {
+            showUpdateModal.value = true
+            Object.assign(accountLog, log)
+            // accountLog props 전송
+        }
+
+        const closeToParent = () => {
+            showUpdateModal.value = false
         }
 
         const clickDeleteHandler = async (id) => {
@@ -272,7 +288,10 @@ export default {
             getPrevMonth, 
             formatDate,
             accountLogs, 
+            accountLog,
             categories,
+            showUpdateModal,
+            closeToParent,
             addThousandSeparator: utilStore.addThousandSeparator, 
             goToPrevMonthHandler, 
             goToNextMonthHandler, 
@@ -282,7 +301,7 @@ export default {
             clickSearchHandler,
             clickModifyHandler,
             clickDeleteHandler,
-            categoryIconClass
+            categoryIconClass,
         }
     }
 }
