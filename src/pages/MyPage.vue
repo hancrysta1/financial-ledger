@@ -29,32 +29,25 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
     const member = ref(null);
     const maskedPassword = ref('');
+    const router = useRouter();
 
-    const fetchMemberData = async () => {
-      try {
-        const memberId = 1; // 테스트를 위해 id값이 1인 멤버값 출력하도록 설정, 추후에 변경 예정
-        const response = await axios.get(`http://localhost:3001/members/${memberId}`);
-        member.value = response.data;
-        if (member.value && member.value.password) {
-          maskedPassword.value = '●'.repeat(member.value.password.length); // 패스워드 마스킹
-        }
-      } catch (error) {
-        console.error('Error fetching member data:', error);
+    onMounted(() => {
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      if (loggedInUser) {
+        member.value = loggedInUser;
+        maskedPassword.value = '●'.repeat(loggedInUser.password.length);
       }
-    };
+    });
 
     const handleEdit = () => {
-      // 수정 버튼 클릭 시 처리 로직을 여기에 추가하세요
-      console.log("수정 버튼 클릭됨");
+      router.push({ name: 'UpdateProfile' });
     };
-
-    onMounted(fetchMemberData);
 
     return {
       member,
