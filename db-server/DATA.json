@@ -1,141 +1,641 @@
 {
-    "accountLogs": [
-        {
-            "id": 1,
-            "member_id": 2,
-            "deposit": 3000000,
-            "withdraw": 0,
-            "category": "월급",
-            "contents": "",
-            "reg_date": "2024-05-17",
-            "balance": 3000000
-        },
-        {
-            "id": 2,
-            "member_id": 1,
-            "deposit": 0,
-            "withdraw": 1000,
-            "category": "생필품",
-            "contents": "다이소",
-            "reg_date": "2024-05-20",
-            "balance": 2999000
-        },
-        {
-            "id": 3,
-            "member_id": 1,
-            "deposit": 0,
-            "withdraw": 10000,
-            "category": "식비",
-            "contents": "점심식사",
-            "reg_date": "2024-05-26",
-            "balance": 2989000
-        },
-        {
-            "id": 4,
-            "member_id": 3,
-            "deposit": 0,
-            "withdraw": 5000,
-            "category": "생필품",
-            "contents": "쓰레기 봉투",
-            "reg_date": "2024-05-12",
-            "balance": 2984000
-        },
-        {
-            "id": 5,
-            "member_id": 4,
-            "deposit": 0,
-            "withdraw": 1000,
-            "category": "식비",
-            "contents": "간식",
-            "reg_date": "2024-05-11",
-            "balance": 2983000
-        },
-        {
-            "id": 6,
-            "member_id": 4,
-            "deposit": 0,
-            "withdraw": 6000,
-            "category": "생필품",
-            "contents": "그릇",
-            "reg_date": "2024-05-13",
-            "balance": 2977000
-        },
-        {
-            "id": 7,
-            "member_id": 5,
-            "deposit": 0,
-            "withdraw": 700000,
-            "category": "여행",
-            "contents": "베트남 항공권",
-            "reg_date": "2024-05-15",
-            "balance": 2277000
-        },
-        {
-            "id": 8,
-            "member_id": 1,
-            "deposit": 0,
-            "withdraw": 3000,
-            "category": "생필품",
-            "contents": "다이소",
-            "reg_date": "2024-05-27",
-            "balance": 2274000
-        },
-        {
-            "id": 9,
-            "member_id": 1,
-            "deposit": 0,
-            "withdraw": 2000,
-            "category": "의료",
-            "contents": "연고",
-            "reg_date": "2024-05-18",
-            "balance": 2272000
-        },
-        {
-            "id": 10,
-            "member_id": 2,
-            "deposit": 0,
-            "withdraw": 5000,
-            "category": "생필품",
-            "contents": "다이소",
-            "reg_date": "2024-05-28",
-            "balance": 2267000
-        }
-    ],
-    "members": [
-        {
-            "member_id": 1,
-            "member_name": "Red",
-            "phone_no": "430-774-3097",
-            "email": "ringon0@dell.com",
-            "status": "Employee"
-        },
-        {
-            "member_id": 2,
-            "member_name": "Serene",
-            "phone_no": "862-542-4006",
-            "email": "sboydell1@who.int",
-            "status": "Freelancer"
-        },
-        {
-            "member_id": 3,
-            "member_name": "Berky",
-            "phone_no": "678-901-4702",
-            "email": "bboni2@yellowpages.com",
-            "status": "Student"
-        },
-        {
-            "member_id": 4,
-            "member_name": "Brice",
-            "phone_no": "657-419-9820",
-            "email": "bpudsey3@pcworld.com",
-            "status": "Job seeker"
-        },
-        {
-            "member_id": 5,
-            "member_name": "Justino",
-            "phone_no": "743-637-9403",
-            "email": "jwetter4@aol.com",
-            "status": "Job seeker"
-        }
-    ]
+  "accountLogs": [
+    {
+      "id": 1,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-03-01T09:00:00.000Z",
+      "balance": 3000000
+    },
+    {
+      "id": 2,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1000,
+      "category": "생필품",
+      "contents": "휴지",
+      "reg_date": "2024-03-02T12:30:00.000Z",
+      "balance": 2999000
+    },
+    {
+      "id": 3,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 5000,
+      "category": "식비",
+      "contents": "점심식사",
+      "reg_date": "2024-03-03T13:00:00.000Z",
+      "balance": 2994000
+    },
+    {
+      "id": 4,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1000000,
+      "category": "여행",
+      "contents": "일본여행",
+      "reg_date": "2024-03-04T07:00:00.000Z",
+      "balance": 1994000
+    },
+    {
+      "id": 5,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 50000,
+      "category": "의료",
+      "contents": "병원비",
+      "reg_date": "2024-03-05T15:30:00.000Z",
+      "balance": 1944000
+    },
+    {
+      "id": 6,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-03-06T09:00:00.000Z",
+      "balance": 4944000
+    },
+    {
+      "id": 7,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1500,
+      "category": "생필품",
+      "contents": "샴푸",
+      "reg_date": "2024-03-07T12:30:00.000Z",
+      "balance": 4942500
+    },
+    {
+      "id": 8,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 7000,
+      "category": "식비",
+      "contents": "저녁식사",
+      "reg_date": "2024-03-08T13:00:00.000Z",
+      "balance": 4935500
+    },
+    {
+      "id": 9,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1200000,
+      "category": "여행",
+      "contents": "유럽여행",
+      "reg_date": "2024-03-09T07:00:00.000Z",
+      "balance": 3735500
+    },
+    {
+      "id": 10,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 30000,
+      "category": "의료",
+      "contents": "치과 치료",
+      "reg_date": "2024-03-10T15:30:00.000Z",
+      "balance": 3705500
+    },
+    {
+      "id": 11,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-03-11T09:00:00.000Z",
+      "balance": 6705500
+    },
+    {
+      "id": 12,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 2500,
+      "category": "생필품",
+      "contents": "세제",
+      "reg_date": "2024-03-12T12:30:00.000Z",
+      "balance": 6703000
+    },
+    {
+      "id": 13,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 4500,
+      "category": "식비",
+      "contents": "간식",
+      "reg_date": "2024-03-13T13:00:00.000Z",
+      "balance": 6698500
+    },
+    {
+      "id": 14,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 950000,
+      "category": "여행",
+      "contents": "제주도 여행",
+      "reg_date": "2024-03-14T07:00:00.000Z",
+      "balance": 5748500
+    },
+    {
+      "id": 15,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 20000,
+      "category": "의료",
+      "contents": "약국",
+      "reg_date": "2024-03-15T15:30:00.000Z",
+      "balance": 5728500
+    },
+    {
+      "id": 16,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-03-16T09:00:00.000Z",
+      "balance": 8728500
+    },
+    {
+      "id": 17,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1800,
+      "category": "생필품",
+      "contents": "비누",
+      "reg_date": "2024-03-17T12:30:00.000Z",
+      "balance": 8726700
+    },
+    {
+      "id": 18,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 5200,
+      "category": "식비",
+      "contents": "아침식사",
+      "reg_date": "2024-03-18T13:00:00.000Z",
+      "balance": 8721500
+    },
+    {
+      "id": 19,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1400000,
+      "category": "여행",
+      "contents": "호주여행",
+      "reg_date": "2024-03-19T07:00:00.000Z",
+      "balance": 7321500
+    },
+    {
+      "id": 20,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 40000,
+      "category": "의료",
+      "contents": "검진비",
+      "reg_date": "2024-03-20T15:30:00.000Z",
+      "balance": 7281500
+    },
+    {
+      "id": 21,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-04-01T09:00:00.000Z",
+      "balance": 10281500
+    },
+    {
+      "id": 22,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1700,
+      "category": "생필품",
+      "contents": "치약",
+      "reg_date": "2024-04-02T12:30:00.000Z",
+      "balance": 10279800
+    },
+    {
+      "id": 23,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 6300,
+      "category": "식비",
+      "contents": "저녁식사",
+      "reg_date": "2024-04-03T13:00:00.000Z",
+      "balance": 10273500
+    },
+    {
+      "id": 24,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1250000,
+      "category": "여행",
+      "contents": "파리여행",
+      "reg_date": "2024-04-04T07:00:00.000Z",
+      "balance": 9023500
+    },
+    {
+      "id": 25,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 45000,
+      "category": "의료",
+      "contents": "약국",
+      "reg_date": "2024-04-05T15:30:00.000Z",
+      "balance": 8978500
+    },
+    {
+      "id": 26,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-04-06T09:00:00.000Z",
+      "balance": 11978500
+    },
+    {
+      "id": 27,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 2200,
+      "category": "생필품",
+      "contents": "화장지",
+      "reg_date": "2024-04-07T12:30:00.000Z",
+      "balance": 11976300
+    },
+    {
+      "id": 28,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 4800,
+      "category": "식비",
+      "contents": "간식",
+      "reg_date": "2024-04-08T13:00:00.000Z",
+      "balance": 11971500
+    },
+    {
+      "id": 29,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1500000,
+      "category": "여행",
+      "contents": "뉴욕여행",
+      "reg_date": "2024-04-09T07:00:00.000Z",
+      "balance": 10471500
+    },
+    {
+      "id": 30,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 55000,
+      "category": "의료",
+      "contents": "물리치료",
+      "reg_date": "2024-04-10T15:30:00.000Z",
+      "balance": 10416500
+    },
+    {
+      "id": 31,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-04-11T09:00:00.000Z",
+      "balance": 13416500
+    },
+    {
+      "id": 32,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 2000,
+      "category": "생필품",
+      "contents": "청소도구",
+      "reg_date": "2024-04-12T12:30:00.000Z",
+      "balance": 13414500
+    },
+    {
+      "id": 33,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 6000,
+      "category": "식비",
+      "contents": "저녁식사",
+      "reg_date": "2024-04-13T13:00:00.000Z",
+      "balance": 13408500
+    },
+    {
+      "id": 34,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1100000,
+      "category": "여행",
+      "contents": "싱가포르 여행",
+      "reg_date": "2024-04-14T07:00:00.000Z",
+      "balance": 12308500
+    },
+    {
+      "id": 35,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 60000,
+      "category": "의료",
+      "contents": "안과 검사",
+      "reg_date": "2024-04-15T15:30:00.000Z",
+      "balance": 12248500
+    },
+    {
+      "id": 36,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-04-16T09:00:00.000Z",
+      "balance": 15248500
+    },
+    {
+      "id": 37,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 2300,
+      "category": "생필품",
+      "contents": "주방세제",
+      "reg_date": "2024-04-17T12:30:00.000Z",
+      "balance": 15246200
+    },
+    {
+      "id": 38,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 5500,
+      "category": "식비",
+      "contents": "점심식사",
+      "reg_date": "2024-04-18T13:00:00.000Z",
+      "balance": 15240700
+    },
+    {
+      "id": 39,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1000000,
+      "category": "여행",
+      "contents": "태국여행",
+      "reg_date": "2024-04-19T07:00:00.000Z",
+      "balance": 14240700
+    },
+    {
+      "id": 40,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 50000,
+      "category": "의료",
+      "contents": "치과 검진",
+      "reg_date": "2024-04-20T15:30:00.000Z",
+      "balance": 14190700
+    },
+    {
+      "id": 41,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-05-01T09:00:00.000Z",
+      "balance": 17190700
+    },
+    {
+      "id": 42,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1800,
+      "category": "생필품",
+      "contents": "화장지",
+      "reg_date": "2024-05-02T12:30:00.000Z",
+      "balance": 17188900
+    },
+    {
+      "id": 43,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 4800,
+      "category": "식비",
+      "contents": "아침식사",
+      "reg_date": "2024-05-03T13:00:00.000Z",
+      "balance": 17184100
+    },
+    {
+      "id": 44,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1200000,
+      "category": "여행",
+      "contents": "몰디브 여행",
+      "reg_date": "2024-05-04T07:00:00.000Z",
+      "balance": 15984100
+    },
+    {
+      "id": 45,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 70000,
+      "category": "의료",
+      "contents": "피부과 치료",
+      "reg_date": "2024-05-05T15:30:00.000Z",
+      "balance": 15914100
+    },
+    {
+      "id": 46,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-05-06T09:00:00.000Z",
+      "balance": 18914100
+    },
+    {
+      "id": 47,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1600,
+      "category": "생필품",
+      "contents": "화장지",
+      "reg_date": "2024-05-07T12:30:00.000Z",
+      "balance": 18912500
+    },
+    {
+      "id": 48,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 7000,
+      "category": "식비",
+      "contents": "저녁식사",
+      "reg_date": "2024-05-08T13:00:00.000Z",
+      "balance": 18905500
+    },
+    {
+      "id": 49,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1100000,
+      "category": "여행",
+      "contents": "프랑스 여행",
+      "reg_date": "2024-05-09T07:00:00.000Z",
+      "balance": 17805500
+    },
+    {
+      "id": 50,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 35000,
+      "category": "의료",
+      "contents": "약국",
+      "reg_date": "2024-05-10T15:30:00.000Z",
+      "balance": 17770500
+    },
+    {
+      "id": 51,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-05-11T09:00:00.000Z",
+      "balance": 20770500
+    },
+    {
+      "id": 52,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 2100,
+      "category": "생필품",
+      "contents": "샴푸",
+      "reg_date": "2024-05-12T12:30:00.000Z",
+      "balance": 20768400
+    },
+    {
+      "id": 53,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 5600,
+      "category": "식비",
+      "contents": "점심식사",
+      "reg_date": "2024-05-13T13:00:00.000Z",
+      "balance": 20762800
+    },
+    {
+      "id": 54,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 950000,
+      "category": "여행",
+      "contents": "영국 여행",
+      "reg_date": "2024-05-14T07:00:00.000Z",
+      "balance": 19812800
+    },
+    {
+      "id": 55,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 25000,
+      "category": "의료",
+      "contents": "병원비",
+      "reg_date": "2024-05-15T15:30:00.000Z",
+      "balance": 19787800
+    },
+    {
+      "id": 56,
+      "member_id": 1,
+      "deposit": 3000000,
+      "withdraw": 0,
+      "category": "월급",
+      "contents": "월급날",
+      "reg_date": "2024-05-16T09:00:00.000Z",
+      "balance": 22787800
+    },
+    {
+      "id": 57,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 1500,
+      "category": "생필품",
+      "contents": "세제",
+      "reg_date": "2024-05-17T12:30:00.000Z",
+      "balance": 22786300
+    },
+    {
+      "id": 58,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 6500,
+      "category": "식비",
+      "contents": "간식",
+      "reg_date": "2024-05-18T13:00:00.000Z",
+      "balance": 22779800
+    },
+    {
+      "id": 59,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 800000,
+      "category": "여행",
+      "contents": "독일 여행",
+      "reg_date": "2024-05-19T07:00:00.000Z",
+      "balance": 21979800
+    },
+    {
+      "id": 60,
+      "member_id": 1,
+      "deposit": 0,
+      "withdraw": 45000,
+      "category": "의료",
+      "contents": "검진비",
+      "reg_date": "2024-05-20T15:30:00.000Z",
+      "balance": 21934800
+    }
+  ],
+  "members": [
+    {
+      "member_id": 1,
+      "member_name": "Red",
+      "phone_no": "430-774-3097",
+      "email": "ringon0@dell.com",
+      "status": "Employee"
+    },
+    {
+      "member_id": 2,
+      "member_name": "Serene",
+      "phone_no": "862-542-4006",
+      "email": "sboydell1@who.int",
+      "status": "Freelancer"
+    },
+    {
+      "member_id": 3,
+      "member_name": "Berky",
+      "phone_no": "678-901-4702",
+      "email": "bboni2@yellowpages.com",
+      "status": "Student"
+    },
+    {
+      "member_id": 4,
+      "member_name": "Brice",
+      "phone_no": "657-419-9820",
+      "email": "bpudsey3@pcworld.com",
+      "status": "Job seeker"
+    },
+    {
+      "member_id": 5,
+      "member_name": "Justino",
+      "phone_no": "743-637-9403",
+      "email": "jwetter4@aol.com",
+      "status": "Job seeker"
+    }
+  ]
 }
