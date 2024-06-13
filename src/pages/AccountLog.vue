@@ -181,12 +181,18 @@ export default {
             const fromDate = utilStore.parseDate(inputObj.fromDate)
             prevMonth = getPrevMonth(fromDate)
             inputObj.fromDate = utilStore.formatDateToStr(prevMonth)
+            const toDate = utilStore.parseDate(inputObj.toDate)
+            prevMonth = getPrevMonth(toDate)
+            inputObj.toDate = utilStore.formatDateToStr(prevMonth)
             refreshAccountLogs()
         }
 
         const goToNextMonthHandler = () => {
+            const fromDate = utilStore.parseDate(inputObj.fromDate)
+            let nextMonth = getNextMonth(fromDate)
+            inputObj.fromDate = utilStore.formatDateToStr(nextMonth)
             const toDate = utilStore.parseDate(inputObj.toDate)
-            let nextMonth = getNextMonth(toDate)
+            nextMonth = getNextMonth(toDate)
             inputObj.toDate = utilStore.formatDateToStr(nextMonth)
             refreshAccountLogs()
         }
