@@ -75,7 +75,6 @@
                                     <td>
                                         {{ formatDate(accountLog.reg_date) }}
                                     </td>
-                                    {{ accountLog.reg_date}}
 						      <!-- <td class="d-flex align-items-center">
                                 <div class="img" style="background-image: url(images/person_2.jpg);"></div>
                                 <div class="pl-3">
