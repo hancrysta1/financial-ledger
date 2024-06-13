@@ -47,7 +47,7 @@
                 </div>
             </div>
             <!-- 모달 -->
-            <DealUpdate v-if="showUpdateModal" @closeToParent="closeToParent" :accountLog="accountLog"/>
+            <DealUpdate v-if="showUpdateModal" @refreshAccountLogs="refreshAccountLogs" @closeToParent="closeToParent" :accountLog="accountLog"/>
             <!-- v-if="showUpdateModal"
             @close="closeModal" -->
             <!-- :dealData="selectedDeal" -->
@@ -197,6 +197,7 @@ export default {
 
         const refreshAccountLogs = async () => {
             const response = await requestAccountLogs()
+            console.log(response)
             accountLogs.splice(0, accountLogs.length, ...filterAccountLogs(response))
         }
 
@@ -296,6 +297,7 @@ export default {
             showUpdateModal,
             closeToParent,
             addThousandSeparator: utilStore.addThousandSeparator, 
+            refreshAccountLogs,
             goToPrevMonthHandler, 
             goToNextMonthHandler, 
             changeCategoryHandler,
