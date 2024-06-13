@@ -63,12 +63,12 @@
                             </thead>
                             <tbody>
                                 <tr class="alert" role="alert"
-                                v-for="(accountLog, index) in accountLogs" :key="accountLog.log_id">
+                                v-for="(accountLog, index) in accountLogs" :key="accountLog.id">
                                     <td>
                                         {{ index + 1 }}
                                     </td>
                                     <td>
-                                        {{ accountLog.reg_date }}
+                                        {{ formatDate(accountLog.reg_date) }}
                                     </td>
                                     
 						      <!-- <td class="d-flex align-items-center">
@@ -93,10 +93,12 @@
                                         {{ addThousandSeparator(accountLog.balance) }}
                                     </td>
                                     <td>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                        @click="clickDeleteHandler(accountLog.id)">
                                             <span aria-hidden="true"><i class="fa fa-close"></i></span>
                                         </button>
-                                        <button type="button" class="modify" data-dismiss="alert" aria-label="Close">
+                                        <button type="button" class="modify" data-dismiss="alert" aria-label="Close"
+                                        @click="clickModifyHandler">
                                             <span aria-hidden="true"><i class="fa fa-pencil-square-o"></i></span>
                                         </button>
                                     </td>
@@ -112,7 +114,8 @@
 
 <script>
 import '@/assets/css/table.css'
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { useUtilStore } from '@/stores/util.js'
 export default {
@@ -142,6 +145,7 @@ export default {
 
         onMounted(async() => {
             prevMonth = getPrevMonth(new Date())
+            console.log(utilStore.formatDateToStr(prevMonth))
             inputObj.fromDate = utilStore.formatDateToStr(prevMonth)
             inputObj.toDate = utilStore.formatDateToStr(new Date())
             const response = await requestAccountLogs()
@@ -155,6 +159,11 @@ export default {
         const getNextMonth = (date) => {
             const timestamp = date.setMonth(date.getMonth() +1)
             return utilStore.parseDate(timestamp)
+        }
+
+        const formatDate = (dateStr) => {
+            const date = utilStore.parseDate(dateStr)
+            return utilStore.formatDateToStr(date)
         }
 
         const goToPrevMonthHandler = () => {
@@ -192,14 +201,30 @@ export default {
             refreshAccountLogs()
         }
 
+        const router = useRouter()
+        const clickModifyHandler = () => {
+            console.log(router)
+            router.push({name: 'DealUpdate'})
+        }
+
+        const clickDeleteHandler = async (id) => {
+            const baseUrl = 'http://localhost:3001'
+            try {
+                const response = await axios.delete(`${baseUrl}/accountLogs/${id}`);
+                refreshAccountLogs()
+            } catch (error) {
+                alert(error)
+            }
+        }
+
         //change, click button
         const requestAccountLogs = async () => {
             const baseUrl = 'http://localhost:3001'
             try {
                 const response = await axios.get(`${baseUrl}/accountLogs`)
                 return response.data
-            } catch(err) {
-                alert(err)
+            } catch(error) {
+                alert(error)
             }
         }
         const filterAccountLogs = (response) => {
@@ -245,6 +270,7 @@ export default {
             inputObj,
             utilStore, 
             getPrevMonth, 
+            formatDate,
             accountLogs, 
             categories,
             addThousandSeparator: utilStore.addThousandSeparator, 
@@ -254,6 +280,8 @@ export default {
             changeHandler,
             inputSearchHandler,
             clickSearchHandler,
+            clickModifyHandler,
+            clickDeleteHandler,
             categoryIconClass
         }
     }
