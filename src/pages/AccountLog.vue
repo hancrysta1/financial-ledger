@@ -223,6 +223,10 @@ export default {
         }
 
         const clickDeleteHandler = async (id) => {
+            const isConfirm = confirm('삭제하시겠습니까?')
+            if(!isConfirm) {
+                return false
+            }
             const baseUrl = 'http://localhost:3001'
             try {
                 const response = await axios.delete(`${baseUrl}/accountLogs/${id}`);
