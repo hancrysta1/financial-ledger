@@ -62,8 +62,17 @@ export default {
     components: {
         Datepicker
     },
-    setup() {
+    props: {
+        accountLog: {
+        type: Object,
+            required: true,
+        default: () => ({})
+        },
+    },
+    emits: ['closeToParent'],
+    setup(props, context) {
         //TODO: Props로 받아오는 데이터로 수정 필요
+        
         let trading = reactive({
             id: 0,
             date: new Date(),
@@ -110,18 +119,19 @@ export default {
                 })
 
                 // await axios.put(url, data, {"Content-Type": "application/json"})
-                
+
                 // TODO: 수정요청 완료 후 모달창 닫기
                 // emit('sendClose')
+                context.emit('closeToParent')
             } catch (err) {
                 alert(err)
                 console.log("err 발생 입니다.")
             }
         }
-
         // [모달창 닫기]: emit
         const sendClose = () => {
             alert('sendClose')
+            context.emit('closeToParent')
             // emit('sendClose')
         }
 
