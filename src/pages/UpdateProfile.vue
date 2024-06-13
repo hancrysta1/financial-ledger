@@ -1,6 +1,6 @@
 <template>
   <div class="profile-container" v-if="member">
-    <img src="../../src/assets/images/profile.png" alt="User Icon">
+    <img src="../assets/images/profile.png" alt="User Icon">
     <div class="profile-details">
       <div class="profile-item">
         <span class="label">ID</span>
@@ -12,7 +12,7 @@
       </div>
       <div class="profile-item">
         <span class="label">패스워드</span>
-        <input type="password" v-model="passwordInput" class="value">
+        <input type="password" v-model="passwordInput" class="value"> 
       </div>
       <div class="profile-item">
         <span class="label">휴대폰 번호</span>
@@ -45,38 +45,32 @@ export default {
     const member = ref(null);
     const passwordInput = ref(''); // 패스워드 입력 필드
 
-    const fetchMemberData = async () => {
-      try {
-        const memberId = 1; // 조회할 member_id를 설정
-        const response = await axios.get(`http://localhost:3001/members/${memberId}`);
-        member.value = response.data;
-        if (member.value && member.value.password) {
-          passwordInput.value = '●'.repeat(member.value.password.length);  // 패스워드 마스킹 처리
-        }
-      } catch (error) {
-        console.error('Error fetching member data:', error);
+    onMounted(() => {
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      if (loggedInUser) {
+        member.value = loggedInUser;
+        passwordInput.value = '●'.repeat(loggedInUser.password.length);
       }
-    };
+    });
 
     const handleSave = async () => {
       try {
         const updatedMember = { ...member.value };
-
+        
         // Check if password is changed and update accordingly
         if (passwordInput.value !== '●'.repeat(member.value.password.length)) {
           updatedMember.password = passwordInput.value; // 변경된 패스워드 적용
         } else {
           updatedMember.password = member.value.password; // 기존 패스워드 유지
         }
-
+        
         await axios.put(`http://localhost:3001/members/${updatedMember.member_id}`, updatedMember);
-        console.log('회원 정보가 성공적으로 업데이트되었습니다.');
+        localStorage.setItem('loggedInUser', JSON.stringify(updatedMember)); // 로컬 스토리지 업데이트
+        alert('회원 정보가 성공적으로 업데이트되었습니다.');
       } catch (error) {
         console.error('Error updating member data:', error);
       }
     };
-
-    onMounted(fetchMemberData);
 
     return {
       member,
@@ -105,7 +99,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   text-align: center;
-  margin: 0 auto;
+  margin:0 auto;
 }
 
 .profile-container img {

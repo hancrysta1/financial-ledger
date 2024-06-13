@@ -7,31 +7,49 @@
       <button type="submit">로그인</button>
     </form>
     <a href="#" @click="registerHandler">회원가입</a>
+    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 
 export default {
   setup() {
     const id = ref('');
     const password = ref('');
+    const errorMessage = ref('');
+    const router = useRouter();
 
-    const loginHandler = () => {
-      // 로그인 처리 로직
-      console.log("ID:", id.value);
-      console.log("Password:", password.value);
+    const loginHandler = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/members');
+        const members = response.data;
+        const member = members.find(m => m.member_id === parseInt(id.value) && m.password === password.value);
+
+        if (member) {
+          alert('로그인 성공');
+          localStorage.setItem('loggedInUser', JSON.stringify(member));
+          router.push({ name: 'MyPage' });
+        } else {
+          errorMessage.value = '잘못 입력하셨습니다. 다시 시도하세요.';
+        }
+      } catch (error) {
+        console.error('Error fetching member data:', error);
+        errorMessage.value = '서버 오류가 발생했습니다. 나중에 다시 시도하세요.';
+      }
     };
 
     const registerHandler = () => {
-      // 회원가입 페이지로 넘기기 
       console.log("회원가입 버튼 클릭됨");
     };
 
     return {
       id,
       password,
+      errorMessage,
       loginHandler,
       registerHandler
     };
@@ -89,5 +107,9 @@ body {
 }
 .login-container a:hover {
   text-decoration: underline;
+}
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
 </style>

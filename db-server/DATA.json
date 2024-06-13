@@ -608,15 +608,15 @@
       "phone_no": "430-774-3097",
       "email": "ringon0@dell.com",
       "status": "Employee",
-      "password" : "111"
+      "password": "111"
     },
     {
       "member_id": 2,
       "member_name": "Serene",
       "phone_no": "862-542-4006",
       "email": "sboydell1@who.int",
-      "status": "Freelancer",
-      "password" : "222"
+      "status": "Job seeker",
+      "password": "222"
     },
     {
       "member_id": 3,
@@ -624,7 +624,7 @@
       "phone_no": "678-901-4702",
       "email": "bboni2@yellowpages.com",
       "status": "Student",
-      "password" : "333"
+      "password": "333"
     },
     {
       "member_id": 4,
@@ -632,7 +632,7 @@
       "phone_no": "657-419-9820",
       "email": "bpudsey3@pcworld.com",
       "status": "Job seeker",
-      "password" : "444"
+      "password": "444"
     },
     {
       "member_id": 5,
@@ -640,7 +640,7 @@
       "phone_no": "743-637-9403",
       "email": "jwetter4@aol.com",
       "status": "Job seeker",
-      "password" : "555"
+      "password": "555"
     }
   ]
 }

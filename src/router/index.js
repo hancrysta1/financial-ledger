@@ -9,7 +9,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: MyPage
+      component: Signin
     },
     {
       path: '/accountlog',
@@ -19,10 +19,12 @@ const router = createRouter({
       component: Signin 
     },
     { path: '/mypage', 
-      component: MyPage 
+      component: MyPage,
+      name: 'MyPage' 
     },
     { path: '/updateprofile', 
-      component: UpdateProfile 
+      component: UpdateProfile,
+      name : 'UpdateProfile'
     }
   ]
 })
