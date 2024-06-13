@@ -1,7 +1,7 @@
 {
     "accountLogs": [
         {
-            "log_id": 1,
+            "id": 1,
             "member_id": 2,
             "deposit": 3000000,
             "withdraw": 0,
@@ -11,7 +11,7 @@
             "balance": 3000000
         },
         {
-            "log_id": 2,
+            "id": 2,
             "member_id": 1,
             "deposit": 0,
             "withdraw": 1000,
@@ -21,7 +21,7 @@
             "balance": 2999000
         },
         {
-            "log_id": 3,
+            "id": 3,
             "member_id": 1,
             "deposit": 0,
             "withdraw": 10000,
@@ -31,7 +31,7 @@
             "balance": 2989000
         },
         {
-            "log_id": 4,
+            "id": 4,
             "member_id": 3,
             "deposit": 0,
             "withdraw": 5000,
@@ -41,7 +41,7 @@
             "balance": 2984000
         },
         {
-            "log_id": 5,
+            "id": 5,
             "member_id": 4,
             "deposit": 0,
             "withdraw": 1000,
@@ -51,7 +51,7 @@
             "balance": 2983000
         },
         {
-            "log_id": 6,
+            "id": 6,
             "member_id": 4,
             "deposit": 0,
             "withdraw": 6000,
@@ -61,7 +61,7 @@
             "balance": 2977000
         },
         {
-            "log_id": 7,
+            "id": 7,
             "member_id": 5,
             "deposit": 0,
             "withdraw": 700000,
@@ -71,7 +71,7 @@
             "balance": 2277000
         },
         {
-            "log_id": 8,
+            "id": 8,
             "member_id": 1,
             "deposit": 0,
             "withdraw": 3000,
@@ -81,7 +81,7 @@
             "balance": 2274000
         },
         {
-            "log_id": 9,
+            "id": 9,
             "member_id": 1,
             "deposit": 0,
             "withdraw": 2000,
@@ -91,7 +91,7 @@
             "balance": 2272000
         },
         {
-            "log_id": 10,
+            "id": 10,
             "member_id": 2,
             "deposit": 0,
             "withdraw": 5000,
