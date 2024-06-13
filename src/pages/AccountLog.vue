@@ -9,13 +9,13 @@
                             <div class="row gx-2 align-items-end">
                                 <div class="col-4 col-sm-2">
                                     <label for="startDate" class="form-label">시작일</label>
-                                    <input id="startDate" class="form-control" v-model="inputDate.from_date"
-                                    type="date" placeholder="시작일을 선택하세요." />
+                                    <input id="startDate" class="form-control" v-model="inputObj.fromDate"
+                                    type="date" placeholder="시작일을 선택하세요." @change="changeHandler"/>
                                     <span id="startDateSelected"></span>
                                 </div>
                                 <div class="col-4 col-sm-2">
                                     <label for="endDate" class="form-label">종료일</label>
-                                    <input id="endDate" class="form-control" v-model="inputDate.to_date"
+                                    <input id="endDate" class="form-control" v-model="inputObj.toDate"
                                      type="date" placeholder="종료일을 선택하세요." />
                                     <span id="endDateSelected"></span>
                                 </div>
@@ -24,18 +24,19 @@
                                     <button type="button" class="btn btn-primary btn-sm" @click="goToNextMonthHandler">다음 달</button>
                                 </div>
                                 <div class="col-4 col-sm-2">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option disabled selected>카테고리</option>
-                                        <option value="1">월급</option>
-                                        <option value="1">생필품</option>
-                                        <option value="2">여행</option>
-                                        <option value="3">반려견</option>
+                                    <select class="form-select" aria-label="Default select example"
+                                    @change="changeCategoryHandler" v-model="inputObj.category">
+                                        <option value="">전체</option>
+                                        <option v-for="(c, index) in categories" :value="c.name">{{c.name}}</option>
                                     </select>
                                 </div>
                                 <div class="col-4 col-sm-2">
                                     <div class="input-group">
-                                        <input type="search" id="form1" class="form-control" placeholder="검색" />
-                                        <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+                                        <input type="search" id="form1" class="form-control" 
+                                        v-model="inputObj.searchContents" placeholder="내용 검색" 
+                                        @input="inputSearchHandler"/>
+                                        <button type="button" class="btn btn-primary" data-mdb-ripple-init
+                                        @click="clickSearchHandler">
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </div>
@@ -51,6 +52,7 @@
                         <table class="table table-responsive-xxl">
                             <thead>
                                 <tr>
+                                    <th>순번</th>
                                     <th>날짜</th>
                                     <th>카테고리</th>
                                     <th>내용</th>
@@ -61,7 +63,10 @@
                             </thead>
                             <tbody>
                                 <tr class="alert" role="alert"
-                                v-for="accountLog in accountLogs" :key="accountLog.log_id">
+                                v-for="(accountLog, index) in accountLogs" :key="accountLog.log_id">
+                                    <td>
+                                        {{ index + 1 }}
+                                    </td>
                                     <td>
                                         {{ accountLog.reg_date }}
                                     </td>
@@ -74,15 +79,6 @@
                               </td> -->
                                     <td class="col d-flex align-items-center">
                                         <i :class="categoryIconClass(accountLog.category)" aria-hidden="true"></i>
-                                        <!-- <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                        <i class="fa fa-money" aria-hidden="true"></i>
-                                        <i class="fa fa-cutlery" aria-hidden="true"></i>
-                                        <i class="fa fa-plane" aria-hidden="true"></i>
-                                        <i class="fa fa-medkit" aria-hidden="true"></i> -->
-                                        <!-- fa fa-money -->
-                                        <!-- fa fa-cutlery -->
-                                        <!-- fa fa-plane -->
-                                        <!-- fa fa-medkit -->
                                         <div class="pl-3">
                                             <span>{{ accountLog.category }}</span>
                                         </div>
@@ -97,8 +93,10 @@
                                         {{ addThousandSeparator(accountLog.balance) }}
                                     </td>
                                     <td>
-                                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
-                                            <button type="button" class="modify" data-dismiss="alert" aria-label="Close">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                        </button>
+                                        <button type="button" class="modify" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true"><i class="fa fa-pencil-square-o"></i></span>
                                         </button>
                                     </td>
@@ -120,27 +118,34 @@ import { useUtilStore } from '@/stores/util.js'
 export default {
     setup() {
         const utilStore = useUtilStore()
-        // const accountLog = reactive({
-        //     log_id: 0,
-        //     member_id: 0,
-        //     deposit: 0,
-        //     withdraw: 0,
-        //     category: "",
-        //     contents: "",
-        //     reg_date: "",
-        //     balance: 0
-        // })
-        const inputDate = reactive({});
         const accountLogs = reactive([])
+        const inputObj = reactive({})
+        const categories = reactive([
+            {
+                name: '생필품',
+                iconClassName: 'fa fa-shopping-cart'
+            },{
+                name: '월급',
+                iconClassName: 'fa fa-money'
+            },{
+                name: '식비',
+                iconClassName: 'fa fa-cutlery'
+            },{
+                name: '여행',
+                iconClassName: 'fa fa-plane'
+            },{
+                name: '의료',
+                iconClassName: 'fa fa-medkit'
+            },
+        ])
         let prevMonth = null
 
         onMounted(async() => {
             prevMonth = getPrevMonth(new Date())
-            inputDate.from_date = utilStore.formatDateToStr(prevMonth)
-            inputDate.to_date = utilStore.formatDateToStr(new Date())
+            inputObj.fromDate = utilStore.formatDateToStr(prevMonth)
+            inputObj.toDate = utilStore.formatDateToStr(new Date())
             const response = await requestAccountLogs()
-            Object.assign(accountLogs, response)
-
+            Object.assign(accountLogs, filterAccountLogs(response))
         })
 
         const getPrevMonth = (date) => {
@@ -153,15 +158,38 @@ export default {
         }
 
         const goToPrevMonthHandler = () => {
-            const fromDate = utilStore.parseDate(inputDate.from_date)
+            const fromDate = utilStore.parseDate(inputObj.fromDate)
             prevMonth = getPrevMonth(fromDate)
-            inputDate.from_date = utilStore.formatDateToStr(prevMonth)
+            inputObj.fromDate = utilStore.formatDateToStr(prevMonth)
+            refreshAccountLogs()
         }
 
         const goToNextMonthHandler = () => {
-            const toDate = utilStore.parseDate(inputDate.to_date)
+            const toDate = utilStore.parseDate(inputObj.toDate)
             let nextMonth = getNextMonth(toDate)
-            inputDate.to_date = utilStore.formatDateToStr(nextMonth)
+            inputObj.toDate = utilStore.formatDateToStr(nextMonth)
+            refreshAccountLogs()
+        }
+
+        const changeCategoryHandler = () => {
+            refreshAccountLogs()
+        }
+
+        const refreshAccountLogs = async () => {
+            const response = await requestAccountLogs()
+            accountLogs.splice(0, accountLogs.length, ...filterAccountLogs(response))
+        }
+
+        const changeHandler = () => {
+            refreshAccountLogs()
+        }
+
+        const inputSearchHandler = () => {
+            refreshAccountLogs()
+
+        }
+        const clickSearchHandler = () => {
+            refreshAccountLogs()
         }
 
         //change, click button
@@ -174,6 +202,27 @@ export default {
                 alert(err)
             }
         }
+        const filterAccountLogs = (response) => {
+            const filteredLogs = response.filter(log => {
+                const dateInRange = log.reg_date >= inputObj.fromDate && log.reg_date <= inputObj.toDate
+                const categoryMatch = checkCategoryMatch(log.category)
+                const isContentMatching = checkContentMatch(log.contents)
+
+                return dateInRange && categoryMatch && isContentMatching;
+            });
+
+            return filteredLogs;
+        };
+
+        const checkCategoryMatch = (category) => {
+            if ((inputObj.category??'') == '') return true;
+            return category.includes(inputObj.category);
+        };
+
+        const checkContentMatch = (contents) => {
+            if ((inputObj.searchContents??'') == '') return true;
+            return contents.includes(inputObj.searchContents);
+        };
 
         const categoryIconClass = (category) => {
             switch(category) {
@@ -192,7 +241,21 @@ export default {
             }
         }
 
-        return {utilStore, inputDate, getPrevMonth, accountLogs, addThousandSeparator: utilStore.addThousandSeparator, goToPrevMonthHandler, goToNextMonthHandler, categoryIconClass}
+        return {
+            inputObj,
+            utilStore, 
+            getPrevMonth, 
+            accountLogs, 
+            categories,
+            addThousandSeparator: utilStore.addThousandSeparator, 
+            goToPrevMonthHandler, 
+            goToNextMonthHandler, 
+            changeCategoryHandler,
+            changeHandler,
+            inputSearchHandler,
+            clickSearchHandler,
+            categoryIconClass
+        }
     }
 }
 </script>
