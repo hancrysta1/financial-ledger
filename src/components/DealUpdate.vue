@@ -62,14 +62,8 @@ export default {
     components: {
         Datepicker
     },
-    props: {
-        accountLog: {
-        type: Object,
-            required: true,
-        default: () => ({})
-        },
-    },
-    emits: ['closeToParent'],
+    props: ['accountLog'],
+    emits: ['closeToParent', 'refreshAccountLogs'],
     setup(props, context) {
         //TODO: Props로 받아오는 데이터로 수정 필요
         
@@ -123,6 +117,7 @@ export default {
                 // TODO: 수정요청 완료 후 모달창 닫기
                 // emit('sendClose')
                 context.emit('closeToParent')
+                context.emit('refreshAccountLogs')
             } catch (err) {
                 alert(err)
                 console.log("err 발생 입니다.")
