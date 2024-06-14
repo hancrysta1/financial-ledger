@@ -521,16 +521,6 @@
       "balance": 20762800
     },
     {
-      "id": "54",
-      "member_id": 1,
-      "deposit": 0,
-      "withdraw": 0,
-      "category": "여행",
-      "contents": "중국 여행",
-      "reg_date": "2024-05-14T07:00:00.000Z",
-      "balance": "19812800"
-    },
-    {
       "id": "55",
       "member_id": 1,
       "deposit": 0,

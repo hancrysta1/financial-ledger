@@ -236,7 +236,7 @@ export default {
             if(!isConfirm) {
                 return false
             }
-            const baseUrl = 'http://localhost:3001'
+            const baseUrl = 'http://localhost:3002'
             try {
                 const response = await axios.delete(`${baseUrl}/accountLogs/${id}`);
                 refreshAccountLogs()
