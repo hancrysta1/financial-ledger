@@ -39,6 +39,6 @@ export default {
 }
 
 .container{
-  font-family: 'BlackHanSans'
+  font-family: 'NanumSquareRoundEB'
 }
 </style>
