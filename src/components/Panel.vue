@@ -4,12 +4,12 @@
         <h3 class="panel-title">최근 구매 내역</h3>
         <div class="right">
           <div class="row">
-            <a href="#" class="btn btn-primary">더보기</a>
+            <a href="#" class="btn-primary">더보기</a>
           </div>
         </div>
       </div>
       <div class="panel-body no-padding">
-        <table class="table table-striped">
+        <table class="table-striped" style="width:765px; height: 400px;">
           <thead>
             <tr>
               <th>순번</th>
@@ -58,7 +58,7 @@ export default {
     const sortedLogs = computed(() => {
       return logs.slice().sort((a, b) => {
         return new Date(b.reg_date) - new Date(a.reg_date);
-      }).slice(0, 5);
+      }).slice(0, 8);
     });
 
     const getClass = (log) => {
@@ -82,6 +82,7 @@ export default {
   color: green; 
 }
 .panel {
+  width: 100%;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -91,26 +92,22 @@ export default {
 }
 .contents{
   text-overflow: ellipsis;overflow:hidden;white-space : nowrap;
-  font-size: x-small;
-}
-
-.panel-body.no-padding{
   
-  font-size: x-small;
-  width: 500px; height: 500px; 
-  table-layout: fixed;
 }
 
 .panel .panel-heading {
+  padding-bottom:80px;
+  float: left;
+  padding-left: 40%;
   position: relative;
 }
 .panel .panel-heading .panel-title {
   margin: 0;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
 }
 .panel .panel-heading button {
-  margin-left: 5px;
+  margin-right: 5px;
   background-color: transparent;
   border: none;
   outline: none;
@@ -119,7 +116,6 @@ export default {
   font-size: 5px;
 }
 .panel .panel-note {
-  font-size: 10px;
   line-height: 2.6;
   color: #777777;
 }

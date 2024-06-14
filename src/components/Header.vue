@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../css/tooplate.css">
     <nav class="navbar navbar-expand-xl navbar-light">
       <a class="navbar-brand" href="#">
-        <h1 class="tm-site-title mb-0">소비 기록<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspX북</h1>
+        <a class="tm-site-title mb-0">소비 기록<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspX북</a>
         <img src="../../img/logo.png" />
       </a>
       <button
@@ -28,7 +28,6 @@
       <div
         class="collapse navbar-collapse"
         id="navbarSupportedContent"
-        style="background-color: rgb(255, 210, 10)"
       >
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
@@ -55,18 +54,19 @@
   </script>
   
   <style>
-h1 {
-  font-family: 'ChangwonDangamAsac';
+.tm-site-title.mb-0 {
+  font-family: 'BlackHanSans';
+  font-size: 80px;
+  line-height: 80%
 }
 #navbarSupportedContent {
   font-family: 'NanumSquareRoundEB';
 }
 
-#navbarSupportedContent{
-  border-radius: 50%;
-}
 .nav-item, .nav-link, .nav-link.active{
-  border-radius: 40%;
+  border-radius: 50%;
+  background-color: rgb(255, 218, 6)
 }
+
   </style>
   

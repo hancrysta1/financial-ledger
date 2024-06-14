@@ -7,7 +7,7 @@
     </div>
     <div class="item3">
       <span class="title">총 수입</span>
-      <div id="inputBar" style="height: 300px; width: 300px;margin: 0"></div>
+      <div id="inputBar" style="padding-left: 10%;height: 300px; width: 300px;margin: 0"></div>
     </div>
     <div class="item4">
       <span class="title">총 지출</span>
@@ -17,7 +17,7 @@
       <span class="title">나의 지출 요약</span>
       <div id="pie" style="width:100%;height: 500px"></div>
     </div>
-    <div class="item7">
+    <div class="item7" style="width:125%; height: 520px;">
       <Panel />
     </div>
   </div>
@@ -46,6 +46,7 @@ export default {
       initChart('inputBar', getInputBarOption());
       initChart('outputBar', getOutputBarOption());
       initChart('pie', getPieOption());
+      initChart('chart',chartOption());
     };
     let month = ref([]);
     let withdrawV = ref(0)
@@ -191,8 +192,8 @@ export default {
 .item7 { grid-area: item7;}
 
 .grid-container {
-  /* float: left;
-  padding-left: 20%; */
+  float: left;
+  padding-left: 10%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
@@ -200,9 +201,7 @@ export default {
     'item2 item2 item3 item3 item4 item4'
     'item2 item2 item3 item3 item4 item4'
     'item6 item6 item6 item7 item7 item7';
-  width: 100%;
-  border: 1px solid;
-  background-color: black;
+  width: 90%;
   justify-items: center; 
   align-items: center; 
 
