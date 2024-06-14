@@ -32,7 +32,7 @@ export default {
         if (member) {
           alert('로그인 성공');
           localStorage.setItem('loggedInUser', JSON.stringify(member));
-          router.push({ name: 'MyPage' });
+          router.push({ name: 'Home' });
         } else {
           errorMessage.value = '잘못 입력하셨습니다. 다시 시도하세요.';
         }

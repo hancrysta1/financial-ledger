@@ -45,12 +45,12 @@ export default {
       initChart('inputBar', getInputBarOption());
       initChart('outputBar', getOutputBarOption());
       initChart('pie', getPieOption());
-      initChart('chart',chartOption());
     };
     let month = ref([]);
+    let category = ref([]);
     let withdrawV = ref(0)
     let depositV = ref(0)
-    
+    let pieResult =ref([])
     const monthWithdrawTotals = (value)=>{
           return month.map(month => 
             logs
@@ -58,18 +58,25 @@ export default {
               .reduce((total, log) => total + log[value], 0)
           );
         }
+    const monthWithCategory = () => {
+      return category.map(categori => ({
+        value: logs.filter(log => log['category'] === categori).length,
+        name: categori
+        
+    }));
+};
 
     onMounted(async ()=>{
         const result = await requestLists()
         Object.assign(logs, result)
         month = [...new Set(logs.map(log => log['reg_date'].split('T')[0].split('-')[1]))]
-        
+        category = [...new Set(logs.map(log => log['category']))]
         withdrawV.value = monthWithdrawTotals('withdraw')
         depositV.value = monthWithdrawTotals('deposit')
+        pieResult.value = monthWithCategory()
         initCharts();
+        console.log('ddd',pieResult.value)
     })
-
-    console.log(withdrawV.value)
     const initChart = (id, option) => {
       const dom = document.getElementById(id);
       const myChart = echarts.init(dom, null, {
@@ -164,14 +171,10 @@ export default {
           labelLine: {
             show: false
           },
-          data: Array.from(new Set(logs.map(log => log['category']))).map(category => ({
-              value: logs.find(log => log['category'] === category)['category'].length,
-              name: category
-          }))
+          data: pieResult.value
         }
       ]
     });
-    
     function formatCurrency(amount) {
             return new Intl.NumberFormat('ko-KR', {
                 style: 'currency',
@@ -180,7 +183,7 @@ export default {
         }
 
 
-    return {logs,depositV,withdrawV,formatCurrency};
+    return {logs,depositV,withdrawV,formatCurrency,pieResult};
   }
 };
 </script>

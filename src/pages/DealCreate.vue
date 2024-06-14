@@ -133,8 +133,9 @@ export default {
 
                 // balance = 잔액 + 입출금액
                 payload.balance += (payload.deposit - payload.withdraw)
-
-                await axios.post(url, payload, { "Content-Type": "application/json" })
+                console.log("asdf")
+                const url2 = `http://localhost:3002/accountLogs`
+                await axios.post(url2, payload, { "Content-Type": "application/json" })
                 alert("성공")
                 // router.push({ name: 'List' })
             } catch (err) {

@@ -4,7 +4,7 @@
         <h3 class="panel-title">최근 구매 내역</h3>
         <div class="right">
           <div class="row">
-            <a href="#" class="btn-primary">더보기</a>
+            <a href="accountlog" class="btn-primary">더보기</a>
           </div>
         </div>
       </div>
@@ -15,7 +15,6 @@
               <th>순번</th>
               <th>날짜</th>
               <th>카테고리</th>
-              
               <th>내용</th>
             <th>금액</th>
             <th>잔액</th>
@@ -27,8 +26,8 @@
             <td :class="getClass(log)">{{ log["reg_date"].split('T')[0] }}</td>
             <td :class="getClass(log)">{{ log["category"] }}</td>
             <td :class="getClass(log)">{{ log["contents"] }}</td>
-            <td :class="getClass(log)">{{ log["withdraw"] || log["deposit"] }}</td>
-            <td><span class="label label-success">{{ log["balance"] }}</span></td> 
+            <td :class="getClass(log)">{{ formatCurrency(log["withdraw"]) || formatCurrency(log["deposit"]) }}</td>
+            <td><span class="label label-success">{{ formatCurrency(log["balance"]) }}</span></td> 
         </tr>
         
     </tbody>
@@ -67,7 +66,14 @@ export default {
             'deposit-class': log["deposit"] && !log["withdraw"]
           };
         }
-    return {logs,getClass,sortedLogs}
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('ko-KR', {
+            style: 'currency',
+            currency: 'KRW'
+        }).format(amount);
+    }
+
+    return {logs,getClass,sortedLogs,formatCurrency}
   }
 }
 
@@ -108,6 +114,7 @@ export default {
 }
 .panel .panel-heading button {
   margin-right: 5px;
+  font-style: italic;
   background-color: transparent;
   border: none;
   outline: none;

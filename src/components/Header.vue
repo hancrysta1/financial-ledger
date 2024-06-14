@@ -31,18 +31,21 @@
       >
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="products.html">거래내역</a>
+            <a class="nav-link" href="accountlog">거래내역</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="accounts.html">마이페이지</a>
+            <a class="nav-link" href="mypage">마이페이지</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="create">거래내역 저장</a>
           </li>
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link d-flex" href="login.html"><span>Join</span></a>
+            <a class="nav-link d-flex" href="signin"><span>Login</span></a>
           </li>
         </ul>
       </div>

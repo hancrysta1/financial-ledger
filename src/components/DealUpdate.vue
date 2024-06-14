@@ -65,16 +65,15 @@ export default {
     props: ['accountLog'],
     emits: ['closeToParent', 'refreshAccountLogs'],
     setup(props, context) {
-        //TODO: Props로 받아오는 데이터로 수정 필요
-        
+        const log = props.accountLog
         let trading = reactive({
-            id: 0,
-            date: new Date(),
-            detail: '',
-            category: '',
-            tradingType: '',
-            expenses: '',
-            balance: ''
+            id: log.id,
+            date: new Date(log.reg_date),
+            detail: log.contents,
+            category: log.category,
+            tradingType: (log.deposit >= 0) ? 'deposit' : 'withdrawal',
+            expenses: `${log.deposit + log.withdraw}`,
+            balance: `${log.balance}`
         })
 
         const datepickerStyles = {
@@ -85,37 +84,20 @@ export default {
 
         // 거래 내역 업데이트(PUT)
         const updateSubmitHandler = async (e) => {
-            const url = `http://localhost:3001/accountLogs`
-            const logDate = trading.date
-            const year = logDate.getFullYear()
-            const month = String(logDate.getMonth() + 1).padStart(2, '0')
-            const day = String(logDate.getDate()).padStart(2, '0')
-            const dateString = `${year}-${month}-${day}`
-
+            const url = `http://localhost:3001/accountLogs/${log.id}`
             const payload = {
-                id: 0,
-                member_id: trading.id,
+                id: log.id,
+                member_id: log.member_id,
                 deposit: trading.tradingType === 'Deposit' ? trading.expenses : 0,
                 withdraw: trading.tradingType === 'Withdrawal' ? trading.expenses : 0,
                 category: trading.category,
                 contents: trading.detail,
-                reg_date: dateString,
+                reg_date: trading.date,
                 balance: trading.balance,
             };
 
-            // const data = trading
-            // const dataJson = JSON.stringify(data)
-
             try {
-                const response = await axios.get(url)
-                const ids = response.data.map((accountLogs) => {
-                    return accountLogs.id
-                })
-
-                // await axios.put(url, data, {"Content-Type": "application/json"})
-
-                // TODO: 수정요청 완료 후 모달창 닫기
-                // emit('sendClose')
+                await axios.put(url, payload, { "Content-Type": "application/json" })
                 context.emit('closeToParent')
                 context.emit('refreshAccountLogs')
             } catch (err) {
@@ -125,7 +107,6 @@ export default {
         }
         // [모달창 닫기]: emit
         const sendClose = () => {
-            alert('sendClose')
             context.emit('closeToParent')
             // emit('sendClose')
         }

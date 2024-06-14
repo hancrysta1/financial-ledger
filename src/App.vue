@@ -1,11 +1,10 @@
 <template>
   <div>
-    <RouterView />
   </div>
   <div id="home">
     <div class="container">
       <Header />
-      <GridContainer/>
+      <RouterView />
     </div>
   </div>
 </template>
