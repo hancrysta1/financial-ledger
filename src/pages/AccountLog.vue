@@ -156,6 +156,8 @@ export default {
         const accountLog = reactive({})
 
         onMounted(async() => {
+            inputObj.category = ''
+
             prevMonth = getPrevMonth(new Date())
             inputObj.fromDate = utilStore.formatDateToStr(prevMonth)
             inputObj.toDate = utilStore.formatDateToStr(new Date())
