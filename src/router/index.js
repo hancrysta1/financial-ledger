@@ -17,14 +17,16 @@ const router = createRouter({
     // },
     {
       path: '/',
-      component: GridContainer
+      component: GridContainer,
+      name : 'Home'
     },
     {
       path: '/accountlog',
       component: AccountLog
     },
     { path: '/signin', 
-      component: Signin 
+      component: Signin,
+      name : 'Signin' 
     },
     { path: '/mypage', 
       component: MyPage,

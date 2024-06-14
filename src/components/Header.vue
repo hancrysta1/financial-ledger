@@ -9,7 +9,7 @@
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="../../css/tooplate.css">
     <nav class="navbar navbar-expand-xl navbar-light">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="#">
         <a class="tm-site-title mb-0">소비 기록<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspX북</a>
         <img src="../../img/logo.png" />
       </a>
@@ -45,7 +45,7 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link d-flex" href="login.html"><span>Join</span></a>
+            <a class="nav-link d-flex" href="signin"><span>Login</span></a>
           </li>
         </ul>
       </div>
