@@ -164,14 +164,15 @@ export default {
           labelLine: {
             show: false
           },
-          data: Array.from(new Set(logs.map(log => log['category']))).map(category => ({
+          data: Array.from(new Set(logs.map(log => {
+            return log['category']}))).map(category => ({
               value: logs.find(log => log['category'] === category)['category'].length,
               name: category
           }))
         }
       ]
     });
-    
+    console.log(Array)
     function formatCurrency(amount) {
             return new Intl.NumberFormat('ko-KR', {
                 style: 'currency',

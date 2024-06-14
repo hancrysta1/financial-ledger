@@ -9,7 +9,7 @@
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="../../css/tooplate.css">
     <nav class="navbar navbar-expand-xl navbar-light">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <a class="tm-site-title mb-0">소비 기록<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspX북</a>
         <img src="../../img/logo.png" />
       </a>
