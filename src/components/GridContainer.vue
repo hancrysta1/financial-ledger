@@ -1,9 +1,8 @@
 <template>
   <div class="grid-container">
-    <div class="item1">Menu</div>
     <div class="item2" style="text-align: center;">
-      <Metric title="이번 달 수입" :number="depositV[1]" />
-      <Metric title="이번 달 지출" :number="withdrawV[1]" />
+      <Metric title="이번 달 수입" :number="formatCurrency(depositV[1])" />
+      <Metric title="이번 달 지출" :number="formatCurrency(withdrawV[1])" />
     </div>
     <div class="item3">
       <span class="title">총 수입</span>
@@ -38,7 +37,7 @@ export default {
     
     let logs = reactive([])
     const requestLists = async()=> {
-        const response = await axios.get('http://localhost:3000/accountLogs')
+        const response = await axios.get('http://localhost:3001/accountLogs')
         return response.data
     }
     const initCharts = () => {
@@ -173,21 +172,24 @@ export default {
       ]
     });
     
-    
+    function formatCurrency(amount) {
+            return new Intl.NumberFormat('ko-KR', {
+                style: 'currency',
+                currency: 'KRW'
+            }).format(amount);
+        }
 
 
-    return {logs,depositV,withdrawV};
+    return {logs,depositV,withdrawV,formatCurrency};
   }
 };
 </script>
 
 <style scoped>
 
-.item1 { grid-area: item1; }
 .item2 { grid-area: item2; }
 .item3 { grid-area: item3; }
 .item4 { grid-area: item4; }
-.item5 { grid-area: item5; }
 .item6 { grid-area: item6; }
 .item7 { grid-area: item7;}
 
@@ -197,7 +199,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
-    'item1 item1 item1 item1 item1 item1'
+    
     'item2 item2 item3 item3 item4 item4'
     'item2 item2 item3 item3 item4 item4'
     'item6 item6 item6 item7 item7 item7';

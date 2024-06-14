@@ -46,7 +46,7 @@ export default {
   setup() {
     let logs = reactive([])
     const requestLists = async()=> {
-        const response = await axios.get('http://localhost:3000/accountLogs')
+        const response = await axios.get('http://localhost:3001/accountLogs')
         return response.data
     }
     
