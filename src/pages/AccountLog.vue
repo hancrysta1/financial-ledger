@@ -99,7 +99,7 @@
                                     <td>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"
                                         @click="clickDeleteHandler(accountLog.id)">
-                                            <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                            <span aria-hidden="true"><i class="fa fa-trash"></i></span>
                                         </button>
                                         <button type="button" class="modify" data-dismiss="alert" aria-label="Close"
                                         @click="clickModifyHandler(accountLog)">
