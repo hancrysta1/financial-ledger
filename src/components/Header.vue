@@ -29,25 +29,25 @@
         class="collapse navbar-collapse"
         id="navbarSupportedContent"
       >
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="accountlog">거래내역</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="mypage">마이페이지</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="create">거래내역 저장</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link d-flex" href="signin"><span>Login</span></a>
-          </li>
-        </ul>
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <router-link class="nav-link active" to="/">Home<span class="sr-only">(current)</span></router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/accountlog">거래내역</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/mypage"><span>마이페이지</span></router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/create"><span>거래내역 저장</span></router-link>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <router-link class="nav-link d-flex" to="/signin"><span>Login</span></router-link>
+        </li>
+      </ul>
       </div>
     </nav>
   </template>
