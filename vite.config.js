@@ -8,10 +8,11 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  base: '/financial-ledger/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      base: '/financial-ledger/'
+      
     }
   }
 })
